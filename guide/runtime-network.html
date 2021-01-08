@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>网络耗时优化 | 快应用性能优化实践</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    
+    <meta name="description" content="通过学习文档中快应用的优化方法，让您快速提升您得快应用性能">
+    
+    <link rel="preload" href="/assets/css/0.styles.5a097fab.css" as="style"><link rel="preload" href="/assets/js/app.56d6d8fb.js" as="script"><link rel="preload" href="/assets/js/2.3be33aa9.js" as="script"><link rel="preload" href="/assets/js/13.3ef61db5.js" as="script"><link rel="prefetch" href="/assets/js/10.24381f1f.js"><link rel="prefetch" href="/assets/js/11.0ddd98b9.js"><link rel="prefetch" href="/assets/js/12.0ce8276c.js"><link rel="prefetch" href="/assets/js/3.fd98c83e.js"><link rel="prefetch" href="/assets/js/4.e7fc07bd.js"><link rel="prefetch" href="/assets/js/5.0ad9cff4.js"><link rel="prefetch" href="/assets/js/6.842bf86e.js"><link rel="prefetch" href="/assets/js/7.79aa0846.js"><link rel="prefetch" href="/assets/js/8.18229252.js"><link rel="prefetch" href="/assets/js/9.76817e02.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.5a097fab.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">快应用性能优化实践</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>开始</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>运行时优化</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/runtime-js.html" class="sidebar-link">脚本执行时间</a></li><li><a href="/guide/runtime-dom.html" class="sidebar-link">DOM 优化</a></li><li><a href="/guide/runtime-network.html" aria-current="page" class="active sidebar-link">网络耗时优化</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/runtime-network.html#避免网络接口请求异常" class="sidebar-link">避免网络接口请求异常</a></li><li class="sidebar-sub-header"><a href="/guide/runtime-network.html#减少首屏渲染时的网络请求数" class="sidebar-link">减少首屏渲染时的网络请求数</a></li><li class="sidebar-sub-header"><a href="/guide/runtime-network.html#数据缓存" class="sidebar-link">数据缓存</a></li><li class="sidebar-sub-header"><a href="/guide/runtime-network.html#减少图片的大小" class="sidebar-link">减少图片的大小</a></li><li class="sidebar-sub-header"><a href="/guide/runtime-network.html#减少图片请求数目" class="sidebar-link">减少图片请求数目</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>rpk包大小优化</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="网络耗时优化"><a href="#网络耗时优化" class="header-anchor">#</a> 网络耗时优化</h1> <p>网络耗时会对首屏的渲染时间和用户的体验有较大的影响，因此需要尽量较少网络请求所消耗的时间，给用户更好的体验</p> <h2 id="避免网络接口请求异常"><a href="#避免网络接口请求异常" class="header-anchor">#</a> 避免网络接口请求异常</h2> <p>网络接口请求失败会导致快应用某些页面无法正常展示，因此应该保证所有接口都能请求成功</p> <h2 id="减少首屏渲染时的网络请求数"><a href="#减少首屏渲染时的网络请求数" class="header-anchor">#</a> 减少首屏渲染时的网络请求数</h2> <p>网络请求耗时会增加首屏渲染的时间，因此可以减少首次渲染时的网络请求，具体请参考<a href="./runtime-dom">dom 优化</a></p> <h2 id="数据缓存"><a href="#数据缓存" class="header-anchor">#</a> 数据缓存</h2> <p>可以将请求的数据进行数据缓存，在下次进行数据请求的时候判断是否存在数据请求，若存在则直接从缓存中读取，无需再次进行网络请求，可大大提升加载速度</p> <h2 id="减少图片的大小"><a href="#减少图片的大小" class="header-anchor">#</a> 减少图片的大小</h2> <p>图片太大会增加下载时间和内存的消耗，因此需要合理控制图片的大小， 具体可参考<a href="/guide/rpk-compress-image.html">减少图片大小文档</a></p> <h2 id="减少图片请求数目"><a href="#减少图片请求数目" class="header-anchor">#</a> 减少图片请求数目</h2> <p>短时间内发起太多图片请求会触发浏览器并行加载的限制，可能导致图片加载慢，用户一直处理等待。应该合理控制数量，可考虑使用雪碧图技术或在屏幕外的图片使用懒加载</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/guide/runtime-dom.html" class="prev">
+        DOM 优化
+      </a></span> <span class="next"><a href="/guide/rpk-subpackage.html">
+        分包加载
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.56d6d8fb.js" defer></script><script src="/assets/js/2.3be33aa9.js" defer></script><script src="/assets/js/13.3ef61db5.js" defer></script>
+  </body>
+</html>
